@@ -5,7 +5,7 @@ import cors from "cors";
 const app = express();
 
 app.get("/", (req, res) => {
-  res.send({ status: success, msg: "Hey" });
+  res.send({ status: "success", msg: "Hey" });
 });
 
 app.get("/:id", cors(), (req, res) => {
