@@ -19,7 +19,17 @@ app.get("/:id", cors(), (req, res) => {
       }
       return response.json();
     })
-    .then((data) => res.send(data))
+    .then((albums) => {
+      const updatedAlbums = [];
+      // Pull required data from external API reponse body
+      albums.map((album) => {
+        updatedAlbums.push({
+          title: album.title,
+          thumbnailUrl: album.thumbnailUrl,
+        });
+      });
+      res.send(updatedAlbums);
+    })
     .catch((e) => res.status(400).json());
 });
 app.use(express.json());
